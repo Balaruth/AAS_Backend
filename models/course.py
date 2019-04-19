@@ -1,4 +1,3 @@
-from db import db
 from superclass import Superclass
 
 class CourseModel(Superclass):

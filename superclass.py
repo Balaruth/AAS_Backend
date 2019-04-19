@@ -1,3 +1,4 @@
+from db import db
 class Superclass(db.Model):
 
 	id = db.Column(db.Integer, primary_key=True)
