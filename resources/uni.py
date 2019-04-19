@@ -5,21 +5,21 @@ from models.uni import UniModel
 class Uni(Resource):
 	parser = reqparse.RequestParser()
 	
-	parser.add_argument('bundesland_id',
+	parser.add_argument('region_id',
 		type=int,
 		required=True,
-		help="Items require a Bundesland ID."
+		help="Institutes require a Region ID."
 	)
 
 	
-	def get(self, bundesland, uni):
+	def get(self, region, uni):
 		uni = UniModel.find_by_name(uni)
 		if uni:
 			return uni.json()
 		return {'message': 'Universität wurde nicht gefunden.'}, 404
 	
 	@jwt_required()	
-	def post(self, bundesland, uni):
+	def post(self, region, uni):
 		if UniModel.find_by_name(uni):
 			return {'message': 'Eine Universität mit dem Namen \'{}\' ist bereits vorhanden.'.format(uni)}, 400
 
@@ -34,7 +34,7 @@ class Uni(Resource):
 
 		return new_uni.json(), 201
 
-	def delete(self, bundesland, uni):
+	def delete(self, region, uni):
 		del_uni = UniModel.find_by_name(uni)
 		if del_uni:
 			del_uni.delete_from_db()
@@ -43,7 +43,7 @@ class Uni(Resource):
 
 
 class UniList(Resource):
-	def get(self, bundesland):
+	def get(self, region):
 		data = Uni.parser.parse_args()
 
 		return {'unis': [uni.json() for uni in UniModel.query.filter_by(**data)]}
