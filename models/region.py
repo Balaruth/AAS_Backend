@@ -1,4 +1,6 @@
 from superclass import Superclass
+from db import db
+
 
 class RegionModel(db.Superclass):
 	__tablename__ = 'regions'

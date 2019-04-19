@@ -1,4 +1,5 @@
 from superclass import Superclass
+from db import db
 
 
 class UniModel(Superclass):

@@ -1,4 +1,6 @@
 from superclass import Superclass
+from db import db
+
 
 class FacultyModel(Superclass):
 	__tablename__ = 'faculties'

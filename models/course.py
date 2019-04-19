@@ -1,4 +1,6 @@
 from superclass import Superclass
+from db import db
+
 
 class CourseModel(Superclass):
 	__tablename__ = 'studien'
